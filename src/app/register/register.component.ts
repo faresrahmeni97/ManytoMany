@@ -7,6 +7,8 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+  showAdminBoard = false;
   form: any = {};
   isSuccessful = false;
   isSignUpFailed = false;
@@ -15,6 +17,16 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (!this.isLoggedIn) {
+      //ok
+    }
+    else
+    {
+      this.router.navigate(['/home']);
+    }
   }
 
   onSubmit() {

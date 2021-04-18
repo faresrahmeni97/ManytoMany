@@ -12,7 +12,7 @@
         <th>Formation</th>
         <th>Imageequipe</th>
         <th>Nbcoupe</th>
-        <a class="btn btn-success" [routerLink]="['/addequipe']" >Ajouter Equipe</a>
+        <a *ngIf="showAdminBoard" class="btn btn-success" [routerLink]="['/addequipe']" >Ajouter Equipe</a>
 
       </tr>
       </thead>
@@ -27,7 +27,7 @@
         <td>{{ equipe.nbcoupe }}</td>
 
 
-        <td>
+        <td *ngIf="showAdminBoard">
 
           <button (click)="deleteEquipe(equipe.id)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
           <button  (click)="updateEquipe(equipe.id)" class="btn btn-info" > update</button>&nbsp;&nbsp;

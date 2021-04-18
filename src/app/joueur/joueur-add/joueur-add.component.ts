@@ -4,6 +4,7 @@ import {Equipe} from "../../modele/equipe";
 import {EquipeServiceService} from "../../_services/equipe-service.service";
 import {JoueurServiceService} from "../../_services/joueur-service.service";
 import {Router} from "@angular/router";
+import {TokenStorageService} from "../../_services/token-storage.service";
 
 @Component({
   selector: 'app-joueur-add',
@@ -12,15 +13,39 @@ import {Router} from "@angular/router";
 })
 export class JoueurAddComponent implements OnInit {
 
+
+  showAdminBoard = false;
+
   joueur: Joueur = new Joueur();
   ideq!:number;
   submitted = false;
-  constructor(private equipeService: EquipeServiceService,private router: Router ,  private service:JoueurServiceService) { }
+  constructor(private equipeService: EquipeServiceService,
+              private router: Router,
+              private service:JoueurServiceService,
+              private tokenStorageService: TokenStorageService) { }
 
 
   equipe !:Equipe;
   ngOnInit() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+
+
+    }
+
+    if (this.showAdminBoard)
+    {
+      //ok
+    }
+    else
+    {
+      this.router.navigate(['/joueurs']);
+    }
   }
 
   newStaff(): void {

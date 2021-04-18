@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {EquipeServiceService} from "../../_services/equipe-service.service";
+import {TokenStorageService} from "../../_services/token-storage.service";
 
 @Component({
   selector: 'app-equipe-add',
@@ -11,11 +12,14 @@ import {EquipeServiceService} from "../../_services/equipe-service.service";
 })
 export class EquipeAddComponent implements OnInit {
 
+  showAdminBoard = false;
+
   imageSrc: any;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private service:EquipeServiceService) { }
+              private service:EquipeServiceService,
+              private tokenStorageService: TokenStorageService) { }
   checkoutForm = this.formBuilder.group({
     id: '',
     paysequipe: '',
@@ -27,6 +31,29 @@ export class EquipeAddComponent implements OnInit {
     fileSource: new FormControl('', [Validators.required])
 
   });
+
+  ngOnInit() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+
+
+    }
+
+    if (this.showAdminBoard)
+    {
+      //ok
+    }
+    else
+    {
+      this.router.navigate(['/staffs']);
+    }
+
+  }
   get f(){
     return this.checkoutForm.controls;
   }

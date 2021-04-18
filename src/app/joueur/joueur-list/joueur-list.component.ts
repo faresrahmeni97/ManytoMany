@@ -3,6 +3,7 @@ import {JoueurServiceService} from "../../_services/joueur-service.service";
 import {EquipeServiceService} from "../../_services/equipe-service.service";
 import {HttpClient} from "@angular/common/http";
 import {Route, Router} from "@angular/router";
+import {TokenStorageService} from "../../_services/token-storage.service";
 
 
 @Component({
@@ -11,7 +12,7 @@ import {Route, Router} from "@angular/router";
   styleUrls: ['./joueur-list.component.css']
 })
 export class JoueurListComponent{
-
+  showAdminBoard = false;
 
   message:any;
   joueurs: any;
@@ -19,11 +20,21 @@ export class JoueurListComponent{
   constructor(private service:JoueurServiceService,
               private equipeService: EquipeServiceService,
               private http: HttpClient,
-              private router: Router ) {
+              private router: Router,
+              private tokenStorageService: TokenStorageService) {
   }
 
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+
+    }
     this.reloadData();
   }
 

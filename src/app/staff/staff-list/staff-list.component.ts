@@ -11,13 +11,30 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
   styleUrls: ['./staff-list.component.css']
 })
 export class StaffListComponent {
-
+  showAdminBoard = false;
 message:any;
 staffs: any;
-constructor(private equipeService: EquipeServiceService,private service:StaffServiceService,private http: HttpClient,private router: Router,private token: TokenStorageService) {}
+constructor(private equipeService: EquipeServiceService,
+            private service:StaffServiceService,
+            private http: HttpClient,
+            private router: Router,
+            private tokenStorageService: TokenStorageService) {}
 
     ngOnInit(): void {
-    this.reloadData();
+      this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+      if (this.isLoggedIn) {
+        const user = this.tokenStorageService.getUser();
+        this.roles = user.roles;
+
+        this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+        this.reloadData();
+      }
+      else
+      {
+        this.router.navigate(['/home']);
+      }
+
     }
 
     reloadData() {

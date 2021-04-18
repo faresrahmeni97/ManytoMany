@@ -37,14 +37,16 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="home">Home</a>
             </li>
-            <li><a routerLink="users">Liste des utilisateurs</a></li>
-            <li><a  routerLink="equipes">Liste des equipes</a></li>
-            <li><a routerLink="joueurs">Liste des joueurs</a></li>
-            <li><a routerLink="staffs">Liste des Staffs</a></li>
-            <li><a href="paiment">Paiment</a></li>
+            <li><a routerLink="users" *ngIf="showAdminBoard" >Admin board</a></li>
+            <li><a  routerLink="equipes" *ngIf="isLoggedIn">Liste des equipes</a></li>
+            <li><a routerLink="joueurs" *ngIf="isLoggedIn">Liste des joueurs</a></li>
+            <li><a routerLink="staffs" *ngIf="isLoggedIn">Liste des Staffs</a></li>
 
 
-            <li *ngIf="isLoggedIn" class="d-flex flex-row-reverse" style="margin-left: 80px;">
+            <li *ngIf="isLoggedIn && !showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 450px;">
+              <a class="nav-link" routerLink="profile">{{ username }}</a>
+            </li>
+            <li *ngIf="isLoggedIn && showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 350px;">
               <a class="nav-link" routerLink="profile">{{ username }}</a>
             </li>
             <li *ngIf="isLoggedIn" class="d-flex flex-row-reverse">
@@ -52,7 +54,7 @@
             </li>
 
             <li *ngIf="!isLoggedIn">
-              <a class="nav-link" routerLink="register" style="margin-left: 150px;">Sign Up</a>
+              <a class="nav-link" routerLink="register" style="margin-left: 900px;">Sign Up</a>
             </li>
             <li *ngIf="!isLoggedIn">
               <a  class="nav-link" routerLink="login">Login</a>

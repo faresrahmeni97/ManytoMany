@@ -8,6 +8,8 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  showAdminBoard = false;
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
@@ -17,9 +19,20 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
+
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (!this.isLoggedIn) {
+    //ok
+    }
+    else
+    {
+    this.router.navigate(['/home']);
+    }
+
     if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+    this.isLoggedIn = true;
+    this.roles = this.tokenStorage.getUser().roles;
     }
   }
 

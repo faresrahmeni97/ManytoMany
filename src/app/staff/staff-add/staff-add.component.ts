@@ -4,6 +4,7 @@ import {StaffServiceService} from "../../_services/staff-service.service";
 import {EquipeServiceService} from "../../_services/equipe-service.service";
 import {Router} from "@angular/router";
 import {Equipe} from "../../modele/equipe";
+import {TokenStorageService} from "../../_services/token-storage.service";
 
 @Component({
   selector: 'app-staff-add',
@@ -12,14 +13,38 @@ import {Equipe} from "../../modele/equipe";
 })
 export class StaffAddComponent {
 
+  showAdminBoard = false;
+
   staff: Staff = new Staff();
   ideq!:number;
 
-  constructor(private equipeService: EquipeServiceService,private router: Router , private service:StaffServiceService) { }
+  constructor(private equipeService: EquipeServiceService,
+              private router: Router,
+              private service:StaffServiceService,
+              private tokenStorageService: TokenStorageService) { }
 
 
   equipe !:Equipe;
   ngOnInit() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+
+
+    }
+
+    if (this.showAdminBoard)
+    {
+      this.reloadData();
+    }
+    else
+    {
+      this.router.navigate(['/staffs']);
+    }
 
   }
 
