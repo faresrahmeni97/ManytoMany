@@ -1,44 +1,72 @@
-<div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">TP DEV.WEB.AVANCEE 20-21</a>
-    <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Home </a>
-      </li>
-      <li class="nav-item" *ngIf="isLoggedIn">
-        <a href="/equipes" class="nav-link" routerLink="admin">Equipes</a>
-      </li>
-      <li class="nav-item" *ngIf="isLoggedIn">
-        <a href="/joueurs" class="nav-link" routerLink="admin">Joueurs</a>
-      </li>
-      <li class="nav-item" *ngIf="isLoggedIn">
-        <a href="/staffs" class="nav-link" routerLink="staffs">Staff</a>
-      </li>
-      <li class="nav-item" *ngIf="showAdminBoard">
-        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-      </li>
-    </ul>
 
-    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-      <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
-      </li>
-    </ul>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script>
 
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-      </li>
-      <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
-      </li>
-    </ul>
+  </script>
+
+  <div ng-app="app" ng-controller="exampleController as ctrl">
+    <button ng-click="ctrl.myFunction()">click me</button>
+    <button onclick="myFunction()">click me</button>
+  </div>
+
+  <link href="/still/bulletin.css" rel="stylesheet" type="text/css" media="print"/>
+
+</head>
+
+
+<router-outlet>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+
+          <ul class="nav navbar-nav"   >
+            <div class="navbar-header">
+              <a class="navbar-brand" href="app-home">Qatar2022</a>
+            </div>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="home">Home</a>
+            </li>
+            <li><a routerLink="users">Liste des utilisateurs</a></li>
+            <li><a  routerLink="equipes">Liste des equipes</a></li>
+            <li><a routerLink="joueurs">Liste des joueurs</a></li>
+            <li><a routerLink="staffs">Liste des Staffs</a></li>
+            <li><a href="paiment">Paiment</a></li>
+
+
+            <li *ngIf="isLoggedIn" class="d-flex flex-row-reverse" style="margin-left: 80px;">
+              <a class="nav-link" routerLink="profile">{{ username }}</a>
+            </li>
+            <li *ngIf="isLoggedIn" class="d-flex flex-row-reverse">
+              <a  class="nav-link" (click)="logout()">LogOut</a>
+            </li>
+
+            <li *ngIf="!isLoggedIn">
+              <a class="nav-link" routerLink="register" style="margin-left: 150px;">Sign Up</a>
+            </li>
+            <li *ngIf="!isLoggedIn">
+              <a  class="nav-link" routerLink="login">Login</a>
+            </li>
+          </ul>
+
+
+
+
+        </ul>
+
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
   </nav>
 
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+
+</router-outlet>

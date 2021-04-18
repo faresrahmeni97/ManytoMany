@@ -11,7 +11,7 @@ export class JoueurServiceService {
 
   constructor(private http: HttpClient) { }
 
-  
+
       getJoueursList(): Observable<any> {
               return this.http.get(`${this.baseUrl}`);
       }
@@ -19,7 +19,7 @@ export class JoueurServiceService {
         var headers_object = new HttpHeaders();
         headers_object.append('Content-Type', 'application/json');
         headers_object.append('Bearer',token );
-       
+
         const httpOptions = {
           headers: headers_object
         };

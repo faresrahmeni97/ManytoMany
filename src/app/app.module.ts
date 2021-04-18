@@ -27,6 +27,7 @@ import { JoueurDetailsComponent } from './joueur/joueur-details/joueur-details.c
 import { EquipeUpdateComponent } from './equipe/equipe-update/equipe-update.component';
 import { EquipeDetailsComponent } from './equipe/equipe-details/equipe-details.component';
 import {EquipeListComponent} from './equipe/equipe-list/equipe-list.component';
+import { UserListComponent } from './user/user-list/user-list.component';
 
 
 
@@ -52,7 +53,8 @@ import {EquipeListComponent} from './equipe/equipe-list/equipe-list.component';
     JoueurDetailsComponent,
     EquipeUpdateComponent,
     EquipeDetailsComponent,
-    EquipeListComponent
+    EquipeListComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

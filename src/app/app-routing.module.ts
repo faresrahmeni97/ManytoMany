@@ -20,6 +20,7 @@ import {JoueurUpdateComponent} from "./joueur/joueur-update/joueur-update.compon
 import {EquipeAddComponent} from "./equipe/equipe-add/equipe-add.component";
 import {EquipeUpdateComponent} from "./equipe/equipe-update/equipe-update.component";
 import {EquipeDetailsComponent} from "./equipe/equipe-details/equipe-details.component";
+import {UserListComponent} from "./user/user-list/user-list.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'staffadd', component: StaffAddComponent},
   { path: 'staff/:id', component: StaffDetailsComponent },
   { path: 'staffupdate/:id/:ide', component: StaffUpdateComponent },
+  { path: 'users', component: UserListComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
