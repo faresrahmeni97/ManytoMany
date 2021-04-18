@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -28,6 +28,9 @@ import { EquipeUpdateComponent } from './equipe/equipe-update/equipe-update.comp
 import { EquipeDetailsComponent } from './equipe/equipe-details/equipe-details.component';
 import {EquipeListComponent} from './equipe/equipe-list/equipe-list.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { UserUpdateComponent } from './user/user-update/user-update.component';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
+import { UserAddComponent } from './user/user-add/user-add.component';
 
 
 
@@ -46,7 +49,6 @@ import { UserListComponent } from './user/user-list/user-list.component';
     StaffListComponent,
     StaffAddComponent,
     JoueurAddComponent,
-    EquipeAddComponent,
     StaffDetailsComponent,
     StaffUpdateComponent,
     JoueurUpdateComponent,
@@ -54,13 +56,19 @@ import { UserListComponent } from './user/user-list/user-list.component';
     EquipeUpdateComponent,
     EquipeDetailsComponent,
     EquipeListComponent,
-    UserListComponent
+    UserListComponent,
+    UserUpdateComponent,
+    UserDetailsComponent,
+    UserAddComponent,
+    EquipeAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

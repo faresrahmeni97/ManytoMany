@@ -9,7 +9,7 @@ const API_URL = 'http://localhost:8090/api/test/';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = 'http://localhost:8080/users';
+  private baseUrl = 'http://localhost:8090/users';
   constructor(private http: HttpClient) { }
 
   getPublicContent(): Observable<any> {
@@ -32,17 +32,17 @@ export class UserService {
     return this.http.get(`${this.baseUrl}`);
   }
   deleteUser(id: number): Observable<any> {
-    return this.http.delete(`http://localhost:8080/userdelete/${id}`, { responseType: 'text' });
+    return this.http.delete(`http://localhost:8090/userdelete/${id}`, { responseType: 'text' });
   }
 
   addUser(user: Object): Observable<Object> {
-    return this.http.post(`http://localhost:8080/adduser`, user);
+    return this.http.post(`http://localhost:8090/adduser`, user);
   }
   updateUser(id: number,user: User): Observable<User> {
-    return this.http.put(`http://localhost:8080/userupdate/${id}`, user);
+    return this.http.put(`http://localhost:8090/userupdate/${id}`, user);
   }
   getUserById(id: number): Observable<User>{
-    return this.http.get<User>(`http://localhost:8080/user/${id}`);
+    return this.http.get<User>(`http://localhost:8090/user/${id}`);
   }
 
 }

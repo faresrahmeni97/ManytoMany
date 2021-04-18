@@ -7,12 +7,15 @@ import {EquipeServiceService} from "../../_services/equipe-service.service";
   selector: 'app-equipe-add',
   templateUrl: './equipe-add.component.html',
   styleUrls: ['./equipe-add.component.css']
+
 })
 export class EquipeAddComponent implements OnInit {
 
   imageSrc: any;
 
-  constructor(private formBuilder: FormBuilder,private router: Router , private service:EquipeServiceService) { }
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private service:EquipeServiceService) { }
   checkoutForm = this.formBuilder.group({
     id: '',
     paysequipe: '',
@@ -24,11 +27,6 @@ export class EquipeAddComponent implements OnInit {
     fileSource: new FormControl('', [Validators.required])
 
   });
-
-  ngOnInit() {
-
-  }
-
   get f(){
     return this.checkoutForm.controls;
   }
@@ -55,6 +53,4 @@ export class EquipeAddComponent implements OnInit {
     this.service.addEquipe(this.checkoutForm.value).subscribe( data => { this.router.navigate(['/equipes']);
     });
   }
-
-
 }
