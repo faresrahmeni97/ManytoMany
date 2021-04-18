@@ -24,6 +24,11 @@ export class EquipeAddComponent implements OnInit {
     fileSource: new FormControl('', [Validators.required])
 
   });
+
+  ngOnInit() {
+
+  }
+
   get f(){
     return this.checkoutForm.controls;
   }

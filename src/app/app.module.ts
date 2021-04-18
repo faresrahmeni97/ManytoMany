@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -26,6 +26,7 @@ import { JoueurUpdateComponent } from './joueur/joueur-update/joueur-update.comp
 import { JoueurDetailsComponent } from './joueur/joueur-details/joueur-details.component';
 import { EquipeUpdateComponent } from './equipe/equipe-update/equipe-update.component';
 import { EquipeDetailsComponent } from './equipe/equipe-details/equipe-details.component';
+import {EquipeListComponent} from './equipe/equipe-list/equipe-list.component';
 
 
 
@@ -50,14 +51,14 @@ import { EquipeDetailsComponent } from './equipe/equipe-details/equipe-details.c
     JoueurUpdateComponent,
     JoueurDetailsComponent,
     EquipeUpdateComponent,
-    EquipeDetailsComponent
+    EquipeDetailsComponent,
+    EquipeListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule,    //added here too
-    ReactiveFormsModule, //added here too
+    FormsModule,
+    HttpClientModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

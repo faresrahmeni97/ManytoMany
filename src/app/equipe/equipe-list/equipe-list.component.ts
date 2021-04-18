@@ -9,9 +9,7 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./equipe-list.component.css']
 })
 export class EquipeListComponent implements OnInit {
-//users: User[] = [];
-// users: Observable<User[]>;
-//users:User=new User(0 ," "," "," "," ");
+
   message:any;
   equipes: any;
   constructor(private service:EquipeServiceService,
