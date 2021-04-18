@@ -1,1 +1,31 @@
-<p>equipe-add works!</p>
+<div class="col-md-4 user-container">
+
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <h2 class="text-center">Ajouter Equipe</h2>
+    <div class="form-group">
+
+
+      <label for="paysequipe">paysequipe:</label>
+      <input type="text" formControlName="paysequipe" style="width:400px;" placeholder="paysequipe" name="paysequipe" class="form-control" id="paysequipe">
+    </div>
+
+    <div class="form-group">
+      <label for="formation">formation:</label>
+      <input type="text" formControlName="formation" style="width:400px;" placeholder="formation" name="formation" class="form-control" id="formation">
+    </div>
+
+    <div class="form-group">
+      <label for="imageequipe">imageequipe:</label>
+      <input formControlName="imageequipe" placeholder="imageequipe" style="width:400px;" name="imageequipe" class="form-control" id="imageequipe">
+    </div>
+    <div class="form-group">
+      <label for="nbcoupe">nbcoupe:</label>
+      <input formControlName="nbcoupe" placeholder="nbcoupe" name="nbcoupe" style="width:400px;" class="form-control" id="nbcoupe">
+    </div>
+
+
+    <button class="btn btn-success">Add</button>
+  </form>
+</div>
+
+

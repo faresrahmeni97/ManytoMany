@@ -1,1 +1,43 @@
-<p>equipe-list works!</p>
+<div class="panel panel-primary">
+  <div class="panel-heading" >
+    <h2>List Equipe</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+
+        <th>ID</th>
+        <th>Pays</th>
+        <th>Formation</th>
+        <th>Imageequipe</th>
+        <th>Nbcoupe</th>
+        <a class="btn btn-success" [routerLink]="['/addequipe']" >Ajouter Equipe</a>
+
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let equipe of equipes  ">
+
+        <td>{{ equipe.id }}</td>
+        <td>{{ equipe.paysequipe }}</td>
+        <td>{{ equipe.formation }}</td>
+       <!-- <img class="ingForOfmage"  src="../assets/images/{{ equipe.imageequipe }}"/> -->
+        <td>{{ equipe.nbcoupe }}</td>
+
+
+        <td>
+
+          <button (click)="deleteEquipe(equipe.id)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
+          <button  (click)="updateEquipe(equipe.id)" class="btn btn-info" > update</button>&nbsp;&nbsp;
+          <button  (click)="getEquipeById(equipe.id)" class="btn btn-primary" > Details</button>&nbsp;
+
+
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

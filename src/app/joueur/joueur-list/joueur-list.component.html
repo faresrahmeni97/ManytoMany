@@ -1,1 +1,187 @@
-<p>joueur-list works!</p>
+
+<div class="panel-body">
+
+  <table class="table table-striped">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="text-center">
+
+        </div>
+        <h3>Liste des  Joueurs  Titulaires</h3>
+      </div>
+    </div>
+    <a class="btn btn-success"  margin="100px 650px 0px;" [routerLink]="['/joueuradd']" >Ajouter joueur</a>
+
+    <div *ngFor="let joueur of joueurs ">
+
+      <div *ngIf="joueur.titulaire==true "  >
+        <table class="table table-striped">
+          <thead>
+          <tr>
+
+            <th>ID</th>
+            <th>Clubjoueur</th>
+            <th>numposte</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Poste</th>
+            <th>Titulaire</th>
+            <th>photos</th>
+            <th>equipe</th>
+          </tr>
+          </thead>
+          <tbody >
+          <tr>
+            <td>
+              <div>
+                {{joueur.id}}
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.clubjoueur}}
+              </div>
+            </td>
+
+            <td>
+              <div>
+                {{joueur.numposte}}
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.nom}}
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.prenom }}
+
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.poste }}
+
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.titulaire }}
+
+              </div>
+            </td>
+            <td>
+              <div>
+                <img class="roundedImage"   src="../assets/images/{{joueur.photos}}"/>
+
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.equipe.paysequipe}}
+
+              </div>
+            </td>
+            <td><button (click)="deleteJoueur(joueur.id)" class="btn btn-danger">Delete</button></td>
+            <td>   <button   (click)="updateJoueur(joueur.id,joueur.equipe.id)" class="btn btn-info" >Update</button></td>
+
+            <td>   <button  (click)="getJoueurById(joueur.id)" class="btn btn-primary" > Details</button></td>
+
+          </tr>
+          </tbody>
+        </table>
+      </div></div>
+
+
+    <div class="panel-body">
+
+      <table class="table table-striped">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+
+            <h3>Liste des  Joueurs  Non Titulaires: Remplancants</h3>
+          </div>
+        </div>
+        <div *ngFor="let joueur of joueurs ">
+
+          <div *ngIf="joueur.titulaire==false "  >
+            <table class="table table-striped">
+              <thead>
+              <tr>
+
+                <th>ID</th>
+                <th>Clubjoueur</th>
+                <th>numposte</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Poste</th>
+                <th>Titulaire</th>
+                <th>photos</th>
+                <th>equipe</th>
+              </tr>
+              </thead>
+              <tbody >
+              <tr>
+                <td>
+                  <div>
+                    {{joueur.id}}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.clubjoueur}}
+                  </div>
+                </td>
+
+                <td>
+                  <div>
+                    {{joueur.numposte}}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.nom}}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.prenom }}
+
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.poste }}
+
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.titulaire }}
+
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <!--   <img src="{{joueur.photos}}"/>-->
+                    <img class="roundedImage"  src="../assets/images/{{joueur.photos}}"/>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.equipe.paysequipe}}
+
+                  </div>
+                </td>
+
+                <td><button (click)="deleteJoueur(joueur.id)" class="btn btn-danger">Delete</button></td>
+                <td><button (click)="updateJoueur(joueur.id,joueur.equipe.id)" class="btn btn-info" >Update</button></td>
+                <td><button (click)="getJoueurById(joueur.id)" class="btn btn-primary" > Details</button></td>
+
+              </tr></tbody>
+
+            </table>
+          </div></div>
+      </table></div></table></div>

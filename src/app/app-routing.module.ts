@@ -11,6 +11,15 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import {JoueurListComponent} from './joueur/joueur-list/joueur-list.component'
 import { EquipeListComponent } from './equipe/equipe-list/equipe-list.component';
 import { StaffListComponent } from './staff/staff-list/staff-list.component';
+import {StaffAddComponent} from "./staff/staff-add/staff-add.component";
+import {StaffDetailsComponent} from "./staff/staff-details/staff-details.component";
+import {StaffUpdateComponent} from "./staff/staff-update/staff-update.component";
+import {JoueurAddComponent} from "./joueur/joueur-add/joueur-add.component";
+import {JoueurDetailsComponent} from "./joueur/joueur-details/joueur-details.component";
+import {JoueurUpdateComponent} from "./joueur/joueur-update/joueur-update.component";
+import {EquipeAddComponent} from "./equipe/equipe-add/equipe-add.component";
+import {EquipeUpdateComponent} from "./equipe/equipe-update/equipe-update.component";
+import {EquipeDetailsComponent} from "./equipe/equipe-details/equipe-details.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,10 +28,19 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'joueurs', component: JoueurListComponent },
+  { path: 'joueuradd', component: JoueurAddComponent },
+  { path: 'joueur/:id', component: JoueurDetailsComponent },
+  { path: 'joueurupdate/:id/:ide', component: JoueurUpdateComponent },
   { path: 'equipes', component: EquipeListComponent },
+  { path: 'equipe/:id', component: EquipeDetailsComponent },
+  { path: 'addequipe', component: EquipeAddComponent },
+  { path: 'equipeupdate/:id', component: EquipeUpdateComponent },
   { path: 'staffs', component: StaffListComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
+  { path: 'staffadd', component: StaffAddComponent},
+  { path: 'staff/:id', component: StaffDetailsComponent },
+  { path: 'staffupdate/:id/:ide', component: StaffUpdateComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

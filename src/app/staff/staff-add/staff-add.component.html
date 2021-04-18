@@ -1,1 +1,46 @@
-<p>staff-add works!</p>
+<div  style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <h3>Ajouter Staff</h3>
+      <label for="nom">Nom Staff</label>
+      <input type="text" class="form-control" id="nom" placeholder="Nom" required [(ngModel)]="staff.nom" name="nom">
+    </div>
+
+    <div class="form-group">
+      <label for="prenom">Prénom Staff</label>
+      <input type="text" class="form-control" id="prenom" placeholder="Prénom" required [(ngModel)]="staff.prenom" name="prenom">
+    </div>
+
+
+    <div class="form-group">
+      <label for="role">Role Staff</label>
+      <select  class="form-control" style="width:200px;"  [(ngModel)]="staff.role" placeholder="uuu" placeholder="Role" class="form-control" id="role"name="role">
+        <option  value="Entraîneur" >Entraîneur</option>
+        <option  value="medecine">Médecine</option>
+        <option  value="Entraîneur" >Infirmier</option>
+        <option  value="Entraîneur" >Respensable marketing</option>
+      </select>
+
+    </div>
+    <div class="form-group">
+      <label for="equipe">Equipe</label>
+      <select  [(ngModel)]="ideq" class="form-control" style="width:200px;" id="equipe"name="equipe">
+        <option  value="1" >tunisie</option>
+        <option  value="2">france</option>
+
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="club">Club</label>
+
+      <select  [(ngModel)]="staff.club" class="form-control"style="width:200px;" id="club"name="equipe">
+        <option  value="cab" >cab</option>
+        <option  value="barm" >barm</option>
+        <option  value="ca">ca</option>
+
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

@@ -1,1 +1,66 @@
-<p>joueur-add works!</p>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <h3>Ajouter Joueur</h3>
+      <label for="nom">clubjoueur</label>
+      <input type="text" class="form-control" id="nom"  placeholder="Club joueur" required [(ngModel)]="joueur.clubjoueur" name="clubjoueur">
+    </div>
+
+    <div class="form-group">
+      <label for="prenom">  Nom </label>
+      <input type="text" class="form-control" id="prenom"  placeholder="Nom" required [(ngModel)]="joueur.nom" name="nom">
+    </div>
+    <div class="form-group">
+      <label for="prenom">Prenom</label>
+      <input type="text" class="form-control" id="prenom"  placeholder="Prénom" required [(ngModel)]="joueur.prenom" name="prenom">
+    </div>
+    <div class="form-group">
+      <label for="role">numposte</label>
+      <input type="value" class="form-control" id="role" placeholder="Numéro de poste" required [(ngModel)]="joueur.numposte" name="numposte">
+    </div>
+    <div class="form-group">
+      <label for="role">Photos</label>
+      <input type="file" src="/Images/"class="form-control" id="role" placeholder="Photos" required [(ngModel)]="joueur.photos" name="photos">
+    </div>
+    <div class="form-group">
+      <label for="role">poste</label>
+      <input type="value" class="form-control" id="role" placeholder="Poste"  required [(ngModel)]="joueur.poste" name="poste">
+    </div>
+
+    <div class="form-group">
+      <label for="role">titulaire</label>
+      <div class="form-group">
+        <div>
+          <input  type="radio" required [(ngModel)]="joueur.titulaire" id="titulaire" name="titulaire" value="true" checked>
+          <label for="titulaire">oui</label>
+        </div>
+
+        <div>
+          <input  type="radio" required [(ngModel)]="joueur.titulaire" id="titulaire" name="titulaire" value="false">
+          <label for="titulaire">Non</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="equipe">Equipe</label>
+      <select  [(ngModel)]="ideq" class="form-control"   id="equipe"name="ideq">
+        <option  value="1" >tunisie</option>
+        <option  value="2">france</option>
+
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>
+
+
+
+
+
+

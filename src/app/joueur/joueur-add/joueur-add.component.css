@@ -1,0 +1,23 @@
+
+form{
+
+  display: block;
+  margin:50px 650px 0px;
+  width: 100%;
+  height: $input-height;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $font-size-base;
+  line-height: $input-line-height;
+  color: $input-color;
+  border: $input-border-width solid $input-border-color;
+
+}
+
+.roundedImage{
+  overflow:hidden;
+  -webkit-border-radius:50px;
+  -moz-border-radius:50px;
+  border-radius:50px;
+  width:90px;
+  height:90px;
+}

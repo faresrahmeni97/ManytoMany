@@ -1,0 +1,18 @@
+.text-center {
+  text-align: center;
+}
+.image {
+  background-size: cover;
+  width: 250px;
+  height: 150px;
+}
+
+
+.roundedImage{
+  overflow:hidden;
+  -webkit-border-radius:60px;
+  -moz-border-radius:70px;
+  border-radius:50px;
+  width:100px;
+  height:100px;
+}

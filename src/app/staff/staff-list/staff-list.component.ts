@@ -11,7 +11,7 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
   styleUrls: ['./staff-list.component.css']
 })
 export class StaffListComponent {
-  
+
 message:any;
 staffs: any;
 constructor(private equipeService: EquipeServiceService,private service:StaffServiceService,private http: HttpClient,private router: Router,private token: TokenStorageService) {}
