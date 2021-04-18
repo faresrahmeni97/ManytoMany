@@ -38,11 +38,7 @@ export class JoueurAddComponent implements OnInit {
 
     }
 
-    if (this.showAdminBoard)
-    {
-      //ok
-    }
-    else
+    if (!this.showAdminBoard)
     {
       this.router.navigate(['/joueurs']);
     }

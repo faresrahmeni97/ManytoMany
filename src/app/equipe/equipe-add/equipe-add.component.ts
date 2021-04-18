@@ -44,13 +44,9 @@ export class EquipeAddComponent implements OnInit {
 
     }
 
-    if (this.showAdminBoard)
+    if (!this.showAdminBoard)
     {
-      //ok
-    }
-    else
-    {
-      this.router.navigate(['/staffs']);
+      this.router.navigate(['/equipes']);
     }
 
   }

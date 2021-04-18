@@ -33,9 +33,14 @@ export class JoueurListComponent{
       this.roles = user.roles;
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.reloadData();
 
     }
-    this.reloadData();
+    else
+    {
+      this.router.navigate(['/home']);
+    }
+
   }
 
   reloadData() {

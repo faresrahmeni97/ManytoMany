@@ -38,8 +38,7 @@ export class StaffAddComponent {
     }
 
     if (this.showAdminBoard)
-    {
-      this.reloadData();
+    {//ok
     }
     else
     {
