@@ -10,7 +10,8 @@ import {TokenStorageService} from "../../_services/token-storage.service";
   styleUrls: ['./joueur-details.component.css']
 })
 export class JoueurDetailsComponent implements OnInit {
-
+  isLoggedIn: any;
+  roles:any;
   showAdminBoard = false;
   id: any;
   private sub: any;

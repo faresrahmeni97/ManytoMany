@@ -12,6 +12,8 @@ import {TokenStorageService} from "../../_services/token-storage.service";
   styleUrls: ['./joueur-update.component.css']
 })
 export class JoueurUpdateComponent implements OnInit {
+  isLoggedIn: any;
+  roles:any;
   showAdminBoard = false;
   joueur: any;
   equipe!: Equipe;

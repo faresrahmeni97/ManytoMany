@@ -12,9 +12,9 @@ import {TokenStorageService} from "../../_services/token-storage.service";
   styleUrls: ['./staff-add.component.css']
 })
 export class StaffAddComponent {
-
+  isLoggedIn: any;
   showAdminBoard = false;
-
+  roles:any;
   staff: Staff = new Staff();
   ideq!:number;
 

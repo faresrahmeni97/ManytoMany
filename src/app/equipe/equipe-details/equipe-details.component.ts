@@ -9,8 +9,10 @@ import {TokenStorageService} from "../../_services/token-storage.service";
   styleUrls: ['./equipe-details.component.css']
 })
 export class EquipeDetailsComponent implements OnInit {
+  isLoggedIn: any;
   showAdminBoard = false;
   id: any;
+  roles:any;
   private sub: any;
   equipe:any;
   constructor(private service:EquipeServiceService,

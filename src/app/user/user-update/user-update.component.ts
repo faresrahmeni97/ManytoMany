@@ -12,7 +12,8 @@ export class UserUpdateComponent implements OnInit {
   showAdminBoard = false;
   id:any;
   user: any;
-
+  isLoggedIn: any;
+  roles:any;
   //user = new User();
   //user = new User();
   constructor(private service:UserService,

@@ -10,10 +10,11 @@ import {TokenStorageService} from "../../_services/token-storage.service";
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-
+  isLoggedIn: any;
   showAdminBoard = false;
   message:any;
   users: any;
+  roles:any;
   constructor(private service:UserService,
               private router: Router,
               private http: HttpClient,

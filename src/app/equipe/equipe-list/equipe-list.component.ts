@@ -11,9 +11,10 @@ import {TokenStorageService} from "../../_services/token-storage.service";
 })
 export class EquipeListComponent implements OnInit {
   showAdminBoard = false;
-
+  isLoggedIn: any;
   message:any;
   equipes: any;
+  roles:any;
   constructor(private service:EquipeServiceService,
               private http: HttpClient,
               private router: Router,private tokenStorageService: TokenStorageService) {

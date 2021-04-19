@@ -11,7 +11,8 @@ import {TokenStorageService} from "../../_services/token-storage.service";
 })
 export class UserAddComponent implements OnInit {
   showAdminBoard = false;
-
+  isLoggedIn: any;
+  roles:any;
   constructor(private formBuilder: FormBuilder,private router: Router,
               private service:UserService,
               private tokenStorageService: TokenStorageService) { }

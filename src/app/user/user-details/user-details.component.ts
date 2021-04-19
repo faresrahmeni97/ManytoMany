@@ -11,8 +11,10 @@ import {TokenStorageService} from "../../_services/token-storage.service";
 export class UserDetailsComponent implements OnInit {
   showAdminBoard = false;
   id: any;
+  isLoggedIn: any;
   private sub: any;
   user:any;
+  roles:any;
   constructor(private service:UserService, private route: ActivatedRoute,
               private router: Router,
               private tokenStorageService: TokenStorageService) {}

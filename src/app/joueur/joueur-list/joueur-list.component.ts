@@ -13,7 +13,8 @@ import {TokenStorageService} from "../../_services/token-storage.service";
 })
 export class JoueurListComponent{
   showAdminBoard = false;
-
+  isLoggedIn: any;
+  roles:any;
   message:any;
   joueurs: any;
 

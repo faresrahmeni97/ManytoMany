@@ -13,7 +13,8 @@ import {TokenStorageService} from "../../_services/token-storage.service";
 })
 export class JoueurAddComponent implements OnInit {
 
-
+  isLoggedIn: any;
+  roles:any;
   showAdminBoard = false;
 
   joueur: Joueur = new Joueur();

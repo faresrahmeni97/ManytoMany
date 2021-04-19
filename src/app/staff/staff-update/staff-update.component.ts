@@ -13,9 +13,9 @@ import {TokenStorageService} from "../../_services/token-storage.service";
 export class StaffUpdateComponent implements OnInit {
 
   showAdminBoard = false;
-
+  isLoggedIn: any;
   submitted = false;
-
+  roles:any;
   staff: any;
   equipe!: Equipe;
   ide!:number;

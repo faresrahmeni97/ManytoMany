@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent implements OnInit {
 
+  isLoggedIn: any;
   showAdminBoard = false;
   form: any = {};
   isSuccessful = false;

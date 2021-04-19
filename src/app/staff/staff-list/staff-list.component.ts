@@ -12,6 +12,8 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 export class StaffListComponent {
   showAdminBoard = false;
+  isLoggedIn: any;
+  roles:any;
 message:any;
 staffs: any;
 constructor(private equipeService: EquipeServiceService,

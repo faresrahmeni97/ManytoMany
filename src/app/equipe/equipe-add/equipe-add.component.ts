@@ -11,9 +11,9 @@ import {TokenStorageService} from "../../_services/token-storage.service";
 
 })
 export class EquipeAddComponent implements OnInit {
-
+  isLoggedIn: any;
   showAdminBoard = false;
-
+  roles:any;
   imageSrc: any;
 
   constructor(private formBuilder: FormBuilder,
