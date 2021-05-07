@@ -8,7 +8,7 @@ import { UserService } from '../_services/user.service';
 })
 export class HomeComponent implements OnInit {
   content: string;
-
+//c
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -21,5 +21,6 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+
 }
 

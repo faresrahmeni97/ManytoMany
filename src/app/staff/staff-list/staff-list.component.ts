@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { EquipeServiceService } from 'src/app/_services/equipe-service.service';
 import { StaffServiceService } from 'src/app/_services/staff-service.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+//c
+declare var myFunction: any;
 
 @Component({
   selector: 'app-staff-list',
@@ -14,8 +16,8 @@ export class StaffListComponent {
   showAdminBoard = false;
   isLoggedIn: any;
   roles:any;
-message:any;
-staffs: any;
+  message:any;
+  staffs: any;
 constructor(private equipeService: EquipeServiceService,
             private service:StaffServiceService,
             private http: HttpClient,
@@ -23,6 +25,8 @@ constructor(private equipeService: EquipeServiceService,
             private tokenStorageService: TokenStorageService) {}
 
     ngOnInit(): void {
+    new myFunction();
+
       this.isLoggedIn = !!this.tokenStorageService.getToken();
 
       if (this.isLoggedIn) {

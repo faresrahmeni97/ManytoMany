@@ -1,4 +1,4 @@
-/*
+
 function myTest() {
     alert('Welcome to custom js');
 }
@@ -6,7 +6,8 @@ function myTest() {
 $(function() {
     alert('Hello, custom js');
 });
-*/
+
+/*
 $(document).ready(function(){
 	// Activate tooltip
 	$('[data-toggle="tooltip"]').tooltip();
@@ -24,9 +25,15 @@ $(document).ready(function(){
 			});
 		}
 	});
+	 $(document).ready( function () {
+      $('#myTable').DataTable();
+  } );
 	checkbox.click(function(){
 		if(!this.checked){
 			$("#selectAll").prop("checked", false);
 		}
 	});
+
 });
+*/
+$

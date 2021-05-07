@@ -15,6 +15,7 @@ export class UserListComponent implements OnInit {
   message:any;
   users: any;
   roles:any;
+
   constructor(private service:UserService,
               private router: Router,
               private http: HttpClient,

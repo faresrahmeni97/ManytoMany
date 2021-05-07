@@ -11,7 +11,7 @@ import {TokenStorageService} from "../../_services/token-storage.service";
   styleUrls: ['./staff-update.component.css']
 })
 export class StaffUpdateComponent implements OnInit {
-
+//c
   showAdminBoard = false;
   isLoggedIn: any;
   submitted = false;
@@ -20,6 +20,9 @@ export class StaffUpdateComponent implements OnInit {
   equipe!: Equipe;
   ide!:number;
   id!:number;
+
+    staffs: any;
+    currentStaff: Staff;
 //nom!:String;
   constructor(private equipeService: EquipeServiceService,
               private service:StaffServiceService,
@@ -55,7 +58,10 @@ export class StaffUpdateComponent implements OnInit {
     });
 
   }
-
+ setNewStaff(staff: Staff): void {
+    console.log(staff);
+    this.currentSttaf = staff;
+  }
 
   save(){
 

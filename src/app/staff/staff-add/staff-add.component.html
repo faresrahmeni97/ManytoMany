@@ -1,46 +1,131 @@
-<div  style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="form-group">
-      <h3>Ajouter Staff</h3>
-      <label for="nom">Nom Staff</label>
-      <input type="text" class="form-control" id="nom" placeholder="Nom" required [(ngModel)]="staff.nom" name="nom">
+<head>
+  <!-- Required meta tags-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Colorlib Templates">
+  <meta name="author" content="Colorlib">
+  <meta name="keywords" content="Colorlib Templates">
+
+  <!-- Title Page-->
+  <title>Au Register Forms by Colorlib</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Icons font CSS-->
+  <link href="/src/app/assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+  <link href="/src/app/assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+  <!-- Font special for pages-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Vendor CSS-->
+  <link href="/src/app/assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+  <link href="/src/app/assets/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+  <!-- Main CSS-->
+  <!--  <link href="css/main.css" rel="stylesheet" media="all">-->
+</head>
+
+<body>
+<div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+  <div class="wrapper wrapper--w960">
+    <div class="card card-2" >
+      <div class="card-heading"></div>
+      <div class="card-body" style="padding: 80px 174px;">
+        <h2 class="title">Ajouter Staff</h2>
+        <div  style="width: 250px;">
+
+          <form  (ngSubmit)="onFormSubmit()" #myForm="ngForm">
+            <main id="todolist">
+              <div class="form-group">
+                <label for="nom">Nom Staff (*)</label>
+                <input type="text"  class="form-control" id="nom" placeholder="Nom" required minlength="2" #uname="ngModel" [(ngModel)]="staff.nom" name="nom" #name="ngModel">
+                <div class="error"   *ngIf="uname.errors"  class="card-panel red accent-1" [hidden]="name.valid || name.pristine" [ngClass] = "'error'">
+                  <div *ngIf="uname.errors.minlength">
+                    la saisie du nom staff est de longueur supérieur à 2
+                  </div>
+
+                  La saisie du nom staff est obligatoire
+
+                </div>
+
+              </div>
+
+              <div class="form-group">
+                <label for="prenom">Prénom Staff(*)</label>
+                <input type="text" class="form-control" id="prenom" #uprenom="ngModel" placeholder="Prénom" required minlength="2" [(ngModel)]="staff.prenom" name="prenom" #name="ngModel">
+                <div class="error"   *ngIf="uprenom.errors"  class="card-panel red accent-1" [hidden]="name.valid || name.pristine" [ngClass] = "'error'">
+                  <div *ngIf="uprenom.errors.minlength">
+                    la saisie du prenom staff est de longueur supérieur à 2
+                  </div>
+
+                  La saisie du prenom staff est obligatoire
+
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="role">Role Staff</label>
+                <select  class="form-control" style="width:200px;" required [(ngModel)]="staff.role" placeholder="uuu" placeholder="Role" class="form-control" id="role"name="role">
+                  <option>-Sélectionner role-</option>
+                  <option  value="Entraîneur" >Entraîneur</option>
+                  <option  value="medecine">Médecine</option>
+                  <option  value="Entraîneur" >Infirmier</option>
+                  <option  value="Entraîneur" >Respensable marketing</option>
+                </select>
+
+              </div>
+              <div class="form-group">
+                <label for="equipe">Equipe</label>
+                <select  [(ngModel)]="ideq" class="form-control" style="width:200px;"  required  id="equipe"name="equipe">
+                  <option>-Sélectionner un equipe-</option>
+                  <option  value="1" >tunisie</option>
+                  <option  value="3">france</option>
+
+                </select>
+              </div>
+
+
+
+              <div class="form-group">
+                <label for="club">Club</label>
+
+                <select  [(ngModel)]="staff.club" class="form-control"style="width:200px;" required id="club"name="club">
+                  <option>--Sélectionner un club--</option>
+                  <option  value="Lyon" >Lyon</option>
+                  <option  value="Paris" >Paris</option>
+                  <option  value="toulouse" >toulouse</option>
+                  <option  value="cab" >cab</option>
+                  <option  value="ca">ca</option>
+                  <option  value="est">EST</option>
+                  <option  value="css">css</option>
+
+                </select>
+              </div>
+
+              <div class="text-center">
+         <div class="p-t-30">
+         <button type="submit" class="btn btn--radius btn--green" ><span class="glyphicon glyphicon glyphicon-ok-sign"></span>&nbsp;Submit</button>
+         </div>
+
+              </div>
+            </main>
+          </form>
+        </div>
+
+        <div [hidden]=" submitted ">
+
+        </div>
+      </div>
     </div>
-
-    <div class="form-group">
-      <label for="prenom">Prénom Staff</label>
-      <input type="text" class="form-control" id="prenom" placeholder="Prénom" required [(ngModel)]="staff.prenom" name="prenom">
-    </div>
-
-
-    <div class="form-group">
-      <label for="role">Role Staff</label>
-      <select  class="form-control" style="width:200px;"  [(ngModel)]="staff.role" placeholder="uuu" placeholder="Role" class="form-control" id="role"name="role">
-        <option  value="Entraîneur" >Entraîneur</option>
-        <option  value="medecine">Médecine</option>
-        <option  value="Entraîneur" >Infirmier</option>
-        <option  value="Entraîneur" >Respensable marketing</option>
-      </select>
-
-    </div>
-    <div class="form-group">
-      <label for="equipe">Equipe</label>
-      <select  [(ngModel)]="ideq" class="form-control" style="width:200px;" id="equipe"name="equipe">
-        <option  value="1" >tunisie</option>
-        <option  value="2">france</option>
-
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="club">Club</label>
-
-      <select  [(ngModel)]="staff.club" class="form-control"style="width:200px;" id="club"name="equipe">
-        <option  value="cab" >cab</option>
-        <option  value="barm" >barm</option>
-        <option  value="ca">ca</option>
-
-      </select>
-    </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
+  </div>
 </div>
+<script src="/src/app/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/src/app/assets/vendor/select2/select2.min.js"></script>
+<script src="/src/app/assets/vendor/datepicker/moment.min.js"></script>
+<script src="/src/app/assets/vendor/datepicker/daterangepicker.js"></script>
+<script src="/src/app/assets/js/global.js"></script>
+</body>
+
+</html>

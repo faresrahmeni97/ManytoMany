@@ -7,6 +7,11 @@
   height: 150px;
 }
 
+div.panel-heading{
+
+ background-color: #8d1b3d;
+
+}
 
 .roundedImage{
   overflow:hidden;
