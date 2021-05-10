@@ -1,0 +1,41 @@
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<div class="panel panel-primary"   >
+  <div class="panel-heading" >
+    <h2>User List</h2>
+
+
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+
+
+        <th>ID</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>password </th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let user of users">
+
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.password }}</td>
+
+        <td>
+          <a (click)="getUserById(user.id)" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+          <a (click)="updateUser(user.id)"class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+          <a  (click)="deleteUser(user.id)"   class="w3-button w3-black"data-toggle="modal" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

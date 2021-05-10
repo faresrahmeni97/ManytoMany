@@ -1,0 +1,45 @@
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<div class="panel panel-primary">
+  <div class="panel-heading" >
+    <h2>List Equipe</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+
+        <th>ID</th>
+        <th>Pays</th>
+        <th>Formation</th>
+        <th>Imageequipe</th>
+        <th>Nbcoupe</th>
+        <div class="col-sm-4 createSegment">
+          <a  class="btn dim_button create_new" *ngIf="showAdminBoard" [routerLink]="['/addequipe']"> <span class="glyphicon glyphicon-plus"></span> Ajouter Equipe</a>
+        </div>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let equipe of equipes  ">
+
+        <td>{{ equipe.id }}</td>
+        <td>{{ equipe.paysequipe }}</td>
+        <td>{{ equipe.formation }}</td>
+        <img class="ingForOfmage"  width="200" src="../assets/images/{{ equipe.imageequipe }}"/>
+        <td>{{ equipe.nbcoupe }}</td>
+
+
+        <td *ngIf="showAdminBoard">
+          <a (click)="getEquipeById(equipe.id)" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+          <a (click)="updateEquipe(equipe.id)"class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+          <a  (click)="deleteEquipe(equipe.id)"   class="w3-button w3-black"data-toggle="modal" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

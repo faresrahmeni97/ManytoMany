@@ -1,0 +1,191 @@
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<div class="panel-body">
+
+  <table class="table table-striped">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="text-center">
+
+        </div>
+        <h3>Liste des  Joueurs  Titulaires</h3>
+      </div>
+    </div>
+    <div class="col-sm-4 createSegment">
+      <a class="btn dim_button create_new" *ngIf="showAdminBoard" [routerLink]="['/joueuradd']"> <span class="glyphicon glyphicon-plus"></span> Ajouter joueur</a>
+    </div>
+
+    <div *ngFor="let joueur of joueurs ">
+
+      <div *ngIf="joueur.titulaire==true "  >
+        <table class="table table-striped">
+          <thead>
+          <tr>
+
+            <th>ID</th>
+            <th>Clubjoueur</th>
+            <th>numposte</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Poste</th>
+            <th>Titulaire</th>
+            <th>photos</th>
+            <th>equipe</th>
+          </tr>
+          </thead>
+          <tbody >
+          <tr>
+            <td>
+              <div>
+                {{joueur.id}}
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.clubjoueur}}
+              </div>
+            </td>
+
+            <td>
+              <div>
+                {{joueur.numposte}}
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.nom}}
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.prenom }}
+
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.poste }}
+
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.titulaire }}
+
+              </div>
+            </td>
+            <td>
+              <div>
+                <img class="roundedImage"   src="../assets/images/{{joueur.photos}}"/>
+
+              </div>
+            </td>
+            <td>
+              <div>
+                {{joueur.equipe.paysequipe}}
+
+              </div>
+            </td>
+    <span *ngIf="showAdminBoard">
+    <a (click)="getJoueurById(joueur.id)" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+    <a (click)="updateJoueur(joueur.id,joueur.equipe.id)"class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+    <a (click)="deleteJoueur(joueur.id)"   class="w3-button w3-black"data-toggle="modal" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+    </span>
+          </tr>
+          </tbody>
+        </table>
+      </div></div>
+
+
+    <div class="panel-body">
+
+      <table class="table table-striped">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+
+            <h3>Liste des  Joueurs  Non Titulaires: Remplancants</h3>
+          </div>
+        </div>
+        <div *ngFor="let joueur of joueurs ">
+
+          <div *ngIf="joueur.titulaire==false "  >
+            <table class="table table-striped">
+              <thead>
+              <tr>
+
+                <th>ID</th>
+                <th>Clubjoueur</th>
+                <th>numposte</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Poste</th>
+                <th>Titulaire</th>
+                <th>photos</th>
+                <th>equipe</th>
+              </tr>
+              </thead>
+              <tbody >
+              <tr>
+                <td>
+                  <div>
+                    {{joueur.id}}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.clubjoueur}}
+                  </div>
+                </td>
+
+                <td>
+                  <div>
+                    {{joueur.numposte}}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.nom}}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.prenom }}
+
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.poste }}
+
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.titulaire }}
+
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <!--   <img src="{{joueur.photos}}"/>-->
+                    <img class="roundedImage"  src="../assets/images/{{joueur.photos}}"/>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{joueur.equipe.paysequipe}}
+
+                  </div>
+                </td>
+<span *ngIf="showAdminBoard">
+    <a (click)="getJoueurById(joueur.id)" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+    <a (click)="updateJoueur(joueur.id,joueur.equipe.id)"class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+    <a (click)="deleteJoueur(joueur.id)"   class="w3-button w3-black"data-toggle="modal" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+
+</span>
+              </tr></tbody>
+
+            </table>
+          </div></div>
+      </table></div></table></div>

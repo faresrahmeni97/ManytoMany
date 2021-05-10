@@ -1,0 +1,41 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<div class="content jumbotron" >
+  <div class="card">
+    <div class="firstinfo"><img src="https://bootdey.com/img/Content/avatar/avatar1.png"/>
+      <div class="profileinfo">
+        <header>
+          <h3>
+            <strong>{{ currentUser.username }}</strong> Profile<br>
+          </h3>
+        </header>
+        <p>
+          <!-- <strong>Token:</strong>
+           {{ currentUser.accessToken.substring(0, 20) }} ...
+           {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
+        -->
+        </p>
+
+        <p>
+        <p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span> <strong>Email:</strong>
+          {{ currentUser.email }}</p><p>
+
+          <span *ngFor="let role of currentUser.roles">
+            <span class="glyphicon glyphicon glyphicon-user" *ngIf="showAdminBoard">&nbsp; <strong>Role:</strong>Administrateur</span>
+             <span class="glyphicon glyphicon glyphicon-user"  *ngIf="!showAdminBoard">&nbsp;<strong>ROLE:</strong>Utilisateur</span></span>
+      </p>
+      </div>
+    </div>
+  </div></div>
+
+
+
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
+
