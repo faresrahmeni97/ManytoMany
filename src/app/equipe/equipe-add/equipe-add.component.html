@@ -56,7 +56,10 @@
       <input type="number" formControlName="nbcoupe" placeholder="nbcoupe" name="nbcoupe" style="width:400px;" class="form-control" id="nbcoupe">
     </div>
 
-
+<div>
+  <input type="file" (change)="onFileChanged($event)"width="500px">
+  <img src="data:image/jpeg;base64,{{base64textString}}" alt="" width="100px" height="100px">
+</div>
     <div class="text-center">
       <div class="p-t-30">
         <button class="btn btn-success">Add</button>
@@ -67,9 +70,13 @@
 </div>
         </div>
 
-        <div [hidden]=" submitted ">
+     <!--
+
+  <div [hidden]=" submitted ">
 
         </div>
+
+     --> 
       </div>
     </div>
   </div>

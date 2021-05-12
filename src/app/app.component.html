@@ -43,13 +43,13 @@
             <li><a routerLink="staffs" *ngIf="isLoggedIn">Liste des Staffs</a></li>
 
 
-            <li *ngIf="isLoggedIn && !showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 300px;">
+            <li *ngIf="isLoggedIn && !showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 250px;">
               <a class="nav-link" routerLink="profile">{{ username }}</a>
             </li>
-            <li *ngIf="isLoggedIn && showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 280px;">
+            <li *ngIf="isLoggedIn && showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 250px;">
               <a class="nav-link" routerLink="profile">{{ username }}</a>
             </li>
-            <li *ngIf="isLoggedIn" class="d-flex flex-row-reverse">
+            <li *ngIf="isLoggedIn" class="d-flex flex-row-reverse" >
               <a  class="nav-link" (click)="logout()">LogOut</a>
             </li>
 

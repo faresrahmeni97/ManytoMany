@@ -14,6 +14,8 @@ export class EquipeUpdateComponent implements OnInit {
   showAdminBoard = false;
   id:any;
   equipe: any;
+  selectedFile: File;
+  base64textString: string;
 
   constructor(private service:EquipeServiceService,
               private route: ActivatedRoute,
@@ -48,7 +50,27 @@ export class EquipeUpdateComponent implements OnInit {
     }
 
   }
+  public onFileChanged(event:Event) {
+    let file = (<HTMLInputElement>event.target).files;
+    console.log(file)
+    this.selectedFile = file?.item(0) as File
 
+
+
+    var reader =  new FileReader();
+    reader.onload  = this.handleFile.bind(this)
+    reader.readAsBinaryString(this.selectedFile)
+  
+    console.log (this.equipe.imageequipe)
+
+  }
+
+  handleFile(event :any){
+    var binaryStrings =   event.target.result;
+    this.base64textString  = btoa(binaryStrings);
+    this.equipe.imageequipe= this.base64textString
+ //   console.log(this.joueur.photos)
+  }
   onSubmit(){
     this.service.updateEquipe(this.id, this.equipe).subscribe( data =>{
         this.getEquipesList();

@@ -2,12 +2,12 @@ import { Equipe } from "./equipe"
 
 export class Joueur {
     id!:number
-    clubjoueur!:String
+    clubjoueur!:string
     numposte!:number
-    prenom!:String
-    nom!:String
-    photos!:String
-    poste!:String
+    prenom!:string
+    nom!:string
+    photos!:any
+    poste!:string
     titulaire!:boolean
     equipe !:Equipe
 }

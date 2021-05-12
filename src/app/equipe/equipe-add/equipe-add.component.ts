@@ -15,6 +15,8 @@ export class EquipeAddComponent implements OnInit {
   showAdminBoard = false;
   roles:any;
   imageSrc: any;
+  selectedFile: Blob;
+  base64textString: string;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -38,12 +40,8 @@ export class EquipeAddComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
-
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-
-
     }
-
     if (!this.showAdminBoard)
     {
       this.router.navigate(['/equipes']);
@@ -53,26 +51,30 @@ export class EquipeAddComponent implements OnInit {
   get f(){
     return this.checkoutForm.controls;
   }
-  onFileChange(event:any) {
-    const reader = new FileReader();
 
-    if(event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
 
-      reader.onload = () => {
+  public onFileChanged(event:Event) {
+    let file = (<HTMLInputElement>event.target).files;
+    console.log(file)
+    this.selectedFile = file?.item(0) as File
+   // console.log(this.selectedFile.picByte)
 
-        this.imageSrc = reader.result as string;
 
-        this.checkoutForm.patchValue({
-          fileSource: reader.result
-        });
 
-      };
-
+    var reader =  new FileReader();
+    reader.onload  = this.handleFile.bind(this)
+    reader.readAsBinaryString(this.selectedFile)
     }
+
+  handleFile(event :any){
+    var binaryStrings =   event.target.result;
+    this.base64textString  = btoa(binaryStrings);
+    this.checkoutForm.value.imageequipe= this.base64textString
+    console.log(this.checkoutForm.value.imageequipe)
+ //   console.log(this.joueur.photos)
   }
   onSubmit() {
+   
     this.service.addEquipe(this.checkoutForm.value).subscribe( data => { this.router.navigate(['/equipes']);
     });
   }

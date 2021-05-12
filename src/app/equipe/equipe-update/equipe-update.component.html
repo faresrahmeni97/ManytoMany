@@ -58,6 +58,10 @@
       <input type="value" class ="form-control" id = "nbcoupe"
              [(ngModel)] = "equipe.nbcoupe" name = "nbcoupe">
     </div>
+    <div>
+      <input type="file" (change)="onFileChanged($event)"/>
+      <img src="data:image/jpeg;base64,{{equipe.imageequipe}}" alt="" width="100px" height="100px"/>
+    </div>
 
     <div class="text-center">
       <div class="p-t-30">

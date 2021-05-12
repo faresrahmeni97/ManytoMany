@@ -1,5 +1,5 @@
 export class Equipe {
-  id:number
+  //id:number
     constructor(
         id:number,
         paysequipe:string,

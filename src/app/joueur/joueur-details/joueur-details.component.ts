@@ -3,6 +3,7 @@ import {JoueurServiceService} from "../../_services/joueur-service.service";
 import {EquipeServiceService} from "../../_services/equipe-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TokenStorageService} from "../../_services/token-storage.service";
+import { Joueur } from 'src/app/modele/joueur';
 
 @Component({
   selector: 'app-joueur-details',
@@ -30,8 +31,9 @@ export class JoueurDetailsComponent implements OnInit {
       this.sub = this.route.params.subscribe(params => {
         this.id = +params['id'];
 
-        this.service.getJoueurById(this.id).subscribe( data => {
+        this.service.getJoueurById(this.id,'').subscribe( data => {
           this.joueur = data;
+          this.joueur.photos = 'data:image/jpeg;base64,'+this.joueur.photos
           console.log(data);
         });
 

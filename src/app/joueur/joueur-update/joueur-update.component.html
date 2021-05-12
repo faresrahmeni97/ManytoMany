@@ -119,6 +119,10 @@
                 </select>
 
               </div>
+              <div>
+                <input type="file" (change)="onFileChanged($event)"/>
+                <img src="data:image/jpeg;base64,{{joueur.photos}}" alt="" width="100px" height="100px"/>
+              </div>
 
 
               <div class="text-center">

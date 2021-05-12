@@ -12,6 +12,8 @@ import {TokenStorageService} from '../../_services/token-storage.service';
   styleUrls: ['./joueur-update.component.css']
 })
 export class JoueurUpdateComponent implements OnInit {
+  selectedFile!:any;
+  base64textString:any;
   isLoggedIn: any;
   roles: any;
   showAdminBoard = false;
@@ -60,7 +62,6 @@ export class JoueurUpdateComponent implements OnInit {
     // @ts-ignore
     this.service.getJoueurById(this.id).subscribe(data => {
       this.joueur = data;
-
       this.titulaire = this.joueur.titulaire;
 
     }, error => console.log(error));
@@ -81,7 +82,27 @@ export class JoueurUpdateComponent implements OnInit {
       });
   }
 
+  public onFileChanged(event:Event) {
+    let file = (<HTMLInputElement>event.target).files;
+    console.log(file)
+    this.selectedFile = file?.item(0) as File
 
+
+
+    var reader =  new FileReader();
+    reader.onload  = this.handleFile.bind(this)
+    reader.readAsBinaryString(this.selectedFile)
+  
+    console.log (this.joueur.photos)
+
+  }
+
+  handleFile(event :any){
+    var binaryStrings =   event.target.result;
+    this.base64textString  = btoa(binaryStrings);
+    this.joueur.photos= this.base64textString
+ //   console.log(this.joueur.photos)
+  }
   onSubmit(){
 
 

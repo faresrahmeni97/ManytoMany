@@ -36,15 +36,12 @@ export class JoueurServiceService {
       return this.http.get<Joueur>(`http://localhost:8090/api/joueur/${id}`);
       }
 
-      addJoueur(joueur:Joueur,token:string): Observable<Object> {
-        var headers_object = new HttpHeaders();
-        headers_object.append('Content-Type', 'application/json');
-        headers_object.append('Bearer',token );
-        const httpOptions = {
-          headers: headers_object
-        };
-           return this.http.post(`http://localhost:8090/api/addjoueur`, joueur);
+      addJoueur(joueur:Joueur): Observable<Object> {
+
+           return this.http.post(`http://localhost:8090/api/joueur/save`, joueur);
            }
+
+           
       updateJoueur(id: number,ideq:number,joueur: Joueur,token :string): Observable<Object> {
         var headers_object = new HttpHeaders();
         headers_object.append('Content-Type', 'application/json');

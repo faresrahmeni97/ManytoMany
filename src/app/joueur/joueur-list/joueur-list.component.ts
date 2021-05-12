@@ -47,11 +47,17 @@ export class JoueurListComponent{
   reloadData() {
     this.joueurs =this.service.getJoueursList();
     let resp=this.service.getJoueursList();
-    resp.subscribe ((data)=>this.joueurs=data);;
+    resp.subscribe ((data)=>{this.joueurs=data
+      this.joueurs.array.forEach(element => {
+        element.photos = 'data:image/jpeg;base64,'+element.photos
+        console.log(element.photos)
+        
+      });
+    });;
   }
 
   deleteJoueur(id: number) {
-    this.service.deletejoueur(id)
+    this.service.deletejoueur(id,'')
       .subscribe(
         data => {
           console.log(data);

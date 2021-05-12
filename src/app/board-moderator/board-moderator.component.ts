@@ -12,13 +12,13 @@ export class BoardModeratorComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getModeratorBoard().subscribe(
+   /* this.userService.getModeratorBoard().subscribe(
       data => {
         this.content = data;
       },
       err => {
         this.content = JSON.parse(err.error).message;
       }
-    );
+    );*/
   }
 }

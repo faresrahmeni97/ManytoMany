@@ -31,12 +31,13 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { UserAddComponent } from './user/user-add/user-add.component';
-
+import { CommonModule } from '@angular/common';  
 
 
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     LoginComponent,
     RegisterComponent,
@@ -63,6 +64,7 @@ import { UserAddComponent } from './user/user-add/user-add.component';
     EquipeAddComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
