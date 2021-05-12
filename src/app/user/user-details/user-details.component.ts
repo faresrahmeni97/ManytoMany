@@ -38,7 +38,7 @@ export class UserDetailsComponent implements OnInit {
       this.sub = this.route.params.subscribe(params => {
         this.id = +params['id'];
 
-        this.service.getUserById(this.id).subscribe( data => {
+        this.service.getUser(this.id).subscribe( data => {
           this.user = data;
           console.log(data);
         });

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../_services/user.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {TokenStorageService} from "../../_services/token-storage.service";
+import {UserService} from '../../_services/user.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {TokenStorageService} from '../../_services/token-storage.service';
 
 @Component({
   selector: 'app-user-update',
@@ -10,13 +10,16 @@ import {TokenStorageService} from "../../_services/token-storage.service";
 })
 export class UserUpdateComponent implements OnInit {
   showAdminBoard = false;
-  id:any;
+  id: any;
   user: any;
   isLoggedIn: any;
-  roles:any;
-  //user = new User();
-  //user = new User();
-  constructor(private service:UserService,
+  roles: any;
+
+
+
+  // user = new User();
+  // user = new User();
+  constructor(private service: UserService,
               private route: ActivatedRoute,
               private router: Router,
               private tokenStorageService: TokenStorageService) { }
@@ -38,9 +41,10 @@ export class UserUpdateComponent implements OnInit {
     if (this.showAdminBoard)
     {
 
-      this.id = this.route.snapshot.params['id'];
+      this.id = this.route.snapshot.params.id;
 
-      this.service.getUserById(this.id).subscribe(data => {
+      this.service.getUser(
+        this.id).subscribe(data => {
         this.user = data;
         console.log(data);
       }, error => console.log(error));
@@ -53,7 +57,7 @@ export class UserUpdateComponent implements OnInit {
   }
 
   onSubmit(){
-    this.service.updateUser(this.id, this.user).subscribe( data =>{
+    this.service.updateUser(this.id, this.user).subscribe( data => {
         this.getUsersList();
       }
       , error => console.log(error));

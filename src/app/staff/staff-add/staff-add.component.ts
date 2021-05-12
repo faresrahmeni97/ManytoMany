@@ -1,14 +1,14 @@
-import {TokenStorageService} from "../../_services/token-storage.service";
+import {TokenStorageService} from '../../_services/token-storage.service';
 
 import { Component, OnInit, Input } from '@angular/core';
-import {Staff} from "../../modele/staff";
+import {Staff} from '../../modele/staff';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import {StaffServiceService} from "../../_services/staff-service.service";
-import {EquipeServiceService} from "../../_services/equipe-service.service";
-import { Equipe }  from "../../modele/equipe";
+import {StaffServiceService} from '../../_services/staff-service.service';
+import {EquipeServiceService} from '../../_services/equipe-service.service';
+import { Equipe } from '../../modele/equipe';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-staff-add',
@@ -21,25 +21,25 @@ isValidFormSubmitted = false;
      nom: new FormControl('', [Validators.minLength(2)]),
      prenom: new FormControl('', [Validators.minLength(2)]),
      role: new FormControl('', [ Validators.required]),
-   equipe:new FormControl(''),
+   equipe: new FormControl(''),
      club: new FormControl('', [ Validators.required])
   });
 
    staff: Staff = new Staff();
-    ideq!:number;
       submitted = false;
   isLoggedIn: any;
   showAdminBoard = false;
-  roles:any;
-  ideq!:number;
+  roles: any;
   staffs: any;
-  constructor(private formBuilder: FormBuilder,private equipeService: EquipeServiceService,
+  equipes: any;
+  constructor(private formBuilder: FormBuilder, private equipeService: EquipeServiceService,
               private router: Router,
-              private service:StaffServiceService,
+              private service: StaffServiceService,
               private tokenStorageService: TokenStorageService) { }
 
 
-  equipe !:Equipe;
+  equipe !: Equipe;
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -49,11 +49,13 @@ isValidFormSubmitted = false;
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
 
-
+      this.equipeService.getEquipesList().subscribe(data => {
+      this.equipes = data;
+    });
     }
 
     if (this.showAdminBoard)
-    {//ok
+    {// ok
     }
     else
     {
@@ -69,27 +71,24 @@ isValidFormSubmitted = false;
     }
 
   save() {
-    this.equipeService.getEquipeById(this.ideq).subscribe(data =>{
-      this.staff.equipe=data;
-      console.log(this.staff.equipe);
-      this.service.addStaff(this.staff).subscribe(data => {
-        console.log(data);
-        this.staff = new Staff();
-        this.router.navigate(['/staffs']);
-      });
+
+    this.service.addStaff(this.staff).subscribe(data => {
+      this.staff = new Staff();
+      this.router.navigate(['/staffs']);
     });
+
   }
   onFormSubmit() {
        this.isValidFormSubmitted = false;
-       if (this.staff.nom.trim().length<2) {
+       if (this.staff.nom.trim().length < 2) {
           return;
           }
-          if (this.staff.prenom.trim().length<2) {
+       if (this.staff.prenom.trim().length < 2) {
                   return;
                   }
-   this.save();
+       this.save();
        this.isValidFormSubmitted = true;
-       //this.staff = this.nom.value;
+       // this.staff = this.nom.value;
 
 
        this.userForm.reset();
@@ -106,10 +105,11 @@ isValidFormSubmitted = false;
                   }
                    setNewStaff(staff: Staff): void {
                       console.log(staff);
-                      this.currentSttaf = staff;
+                      this.staff = staff;
                     }
     get club() {
        return this.userForm.get('club');
     }
+
   }
 

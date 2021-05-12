@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {EquipeServiceService} from "../../_services/equipe-service.service";
-import {JoueurServiceService} from "../../_services/joueur-service.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
-import {Equipe} from "../../modele/equipe";
-import {TokenStorageService} from "../../_services/token-storage.service";
+import {EquipeServiceService} from '../../_services/equipe-service.service';
+import {JoueurServiceService} from '../../_services/joueur-service.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {Equipe} from '../../modele/equipe';
+import {TokenStorageService} from '../../_services/token-storage.service';
 
 @Component({
   selector: 'app-joueur-update',
@@ -13,15 +13,18 @@ import {TokenStorageService} from "../../_services/token-storage.service";
 })
 export class JoueurUpdateComponent implements OnInit {
   isLoggedIn: any;
-  roles:any;
+  roles: any;
   showAdminBoard = false;
   joueur: any;
   equipe!: Equipe;
   id!: number;
-  ideq!:number;
+  ideq!: number;
   submitted = false;
+  equipes: any;
+  titulaire: any;
+
   constructor(private equipeService: EquipeServiceService,
-              private service:JoueurServiceService,
+              private service: JoueurServiceService,
               private route: ActivatedRoute,
               private http: HttpClient,
               private router: Router,
@@ -31,6 +34,9 @@ export class JoueurUpdateComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.equipeService.getEquipesList().subscribe(data => {
+      this.equipes = data;
+    });
 
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -48,15 +54,18 @@ export class JoueurUpdateComponent implements OnInit {
       this.router.navigate(['/home']);
     }
 
-    this.id = this.route.snapshot.params['id'];
-    this.ideq = this.route.snapshot.params['ide'];
+    this.id = this.route.snapshot.params.id;
+    this.ideq = this.route.snapshot.params.ide;
     console.log(this.ideq);
+    // @ts-ignore
     this.service.getJoueurById(this.id).subscribe(data => {
       this.joueur = data;
 
+      this.titulaire = this.joueur.titulaire;
+
     }, error => console.log(error));
-    this.equipeService.getEquipeById(this.ideq).subscribe(data =>{
-      this.joueur.equipe=data;
+    this.equipeService.getEquipeById(this.joueur.equipe.id).subscribe(data => {
+      this.joueur.equipe = data;
     });
   }
 
@@ -64,12 +73,12 @@ export class JoueurUpdateComponent implements OnInit {
 
   save(){
 
-    this.service.updateJoueur(this.id,this.ideq,this.joueur).subscribe(
+    this.service.updateJoueur(this.id, this.joueur.equipe.id, this.joueur, '').subscribe(
       data => {
         console.log(data);
         this.getJoueursList();
 
-      })
+      });
   }
 
 
@@ -77,14 +86,14 @@ export class JoueurUpdateComponent implements OnInit {
 
 
 
-    this.equipeService.getEquipeById(this.ideq).subscribe(data =>{
-      this.joueur.equipe=data;
+    this.equipeService.getEquipeById(this.joueur.equipe.id).subscribe(data => {
+      this.joueur.equipe = data;
 
-      this.service.updateJoueur(this.id,this.ideq,this.joueur).subscribe(data => {
+      this.service.updateJoueur(this.id, this.joueur.equipe.id, this.joueur, '').subscribe(data => {
         console.log(data);
         this.getJoueursList();
-      })
-    })
+      });
+    });
     this.submitted = true;
   }
 

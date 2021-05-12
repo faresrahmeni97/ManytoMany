@@ -43,10 +43,10 @@
             <li><a routerLink="staffs" *ngIf="isLoggedIn">Liste des Staffs</a></li>
 
 
-            <li *ngIf="isLoggedIn && !showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 450px;">
+            <li *ngIf="isLoggedIn && !showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 300px;">
               <a class="nav-link" routerLink="profile">{{ username }}</a>
             </li>
-            <li *ngIf="isLoggedIn && showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 350px;">
+            <li *ngIf="isLoggedIn && showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 280px;">
               <a class="nav-link" routerLink="profile">{{ username }}</a>
             </li>
             <li *ngIf="isLoggedIn" class="d-flex flex-row-reverse">
@@ -54,7 +54,7 @@
             </li>
 
             <li *ngIf="!isLoggedIn">
-              <a class="nav-link" routerLink="register" style="margin-left: 900px;">Sign Up</a>
+              <a class="nav-link" routerLink="register" style="margin-left: 850px;">Sign Up</a>
             </li>
             <li *ngIf="!isLoggedIn">
               <a  class="nav-link" routerLink="login">Login</a>

@@ -12,7 +12,7 @@
         <h3>Liste des  Joueurs  Titulaires</h3>
       </div>
     </div>
-    <div class="col-sm-4 createSegment">
+    <div class="col-sm-4 createSegment" style="margin-bottom: 1%">
       <a class="btn dim_button create_new" *ngIf="showAdminBoard" [routerLink]="['/joueuradd']"> <span class="glyphicon glyphicon-plus"></span> Ajouter joueur</a>
     </div>
 
@@ -32,6 +32,9 @@
             <th>Titulaire</th>
             <th>photos</th>
             <th>equipe</th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
           </thead>
           <tbody >
@@ -87,11 +90,19 @@
 
               </div>
             </td>
-    <span *ngIf="showAdminBoard">
-    <a (click)="getJoueurById(joueur.id)" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-    <a (click)="updateJoueur(joueur.id,joueur.equipe.id)"class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-    <a (click)="deleteJoueur(joueur.id)"   class="w3-button w3-black"data-toggle="modal" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-    </span>
+
+            <td *ngIf="showAdminBoard">
+              <a (click)="getJoueurById(joueur.id)" class="view w3-button btn" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+
+            </td>
+            <td *ngIf="showAdminBoard">
+              <a (click)="updateJoueur(joueur.id,joueur.equipe.id)"class="edit w3-button btn" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+
+            </td>
+            <td *ngIf="showAdminBoard">
+              <a (click)="deleteJoueur(joueur.id)"   class="delete w3-button btn" data-toggle="modal" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+
+            </td>
           </tr>
           </tbody>
         </table>
@@ -123,6 +134,9 @@
                 <th>Titulaire</th>
                 <th>photos</th>
                 <th>equipe</th>
+                <th></th>
+                <th></th>
+                <th></th>
               </tr>
               </thead>
               <tbody >
@@ -178,12 +192,18 @@
 
                   </div>
                 </td>
-<span *ngIf="showAdminBoard">
-    <a (click)="getJoueurById(joueur.id)" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-    <a (click)="updateJoueur(joueur.id,joueur.equipe.id)"class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-    <a (click)="deleteJoueur(joueur.id)"   class="w3-button w3-black"data-toggle="modal" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                <td *ngIf="showAdminBoard">
+                  <a (click)="getJoueurById(joueur.id)" class="view w3-button btn" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
 
-</span>
+                </td>
+                <td *ngIf="showAdminBoard">
+                  <a (click)="updateJoueur(joueur.id,joueur.equipe.id)"class="edit w3-button btn" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+
+                </td>
+                <td *ngIf="showAdminBoard">
+                  <a (click)="deleteJoueur(joueur.id)"   class="delete w3-button btn" data-toggle="modal" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+
+                </td>
               </tr></tbody>
 
             </table>

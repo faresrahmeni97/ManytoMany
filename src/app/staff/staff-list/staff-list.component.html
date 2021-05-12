@@ -52,7 +52,7 @@
 
       <div class="panel panel-primary">
         <div class="panel-heading" >
-          <h2>Staff <b>Détails</b></h2>
+          <h2>Staff <b>List</b></h2>
 
         </div>
         <div class="panel-body">
@@ -90,7 +90,9 @@
                       <th>Role</th>
                       <th>Equipe</th>
 
-                      <th  *ngIf="showAdminBoard" >Action</th>
+                      <th  *ngIf="showAdminBoard" ></th>
+                      <th *ngIf="showAdminBoard" ></th>
+                      <th *ngIf="showAdminBoard" ></th>
 
                     </tr>
                     </thead>
@@ -101,12 +103,18 @@
                       <td>{{ staff.prenom }}</td>
                       <td>{{ staff.role }}</td>
                       <td>{{ staff.equipe.paysequipe }}</td>
+                      <td *ngIf="showAdminBoard">
+  <a (click)="getStaffById(staff.id)" class="view w3-button btn" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                      </td>
+                      <td *ngIf="showAdminBoard">
+                        <a (click)="updateStaff(staff.id,staff.equipe.id)"class="edit w3-button btn" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+
+                      </td>
+
 
                       <td *ngIf="showAdminBoard">
 
-                        <a (click)="getStaffById(staff.id)" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                        <a (click)="updateStaff(staff.id,staff.equipe.id)"class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                        <a onclick="document.getElementById('id01').style.display='block'"   class="w3-button w3-black"data-toggle="modal" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        <a onclick="document.getElementById('id01').style.display='block'"  data-toggle="modal" class="delete  w3-button btn" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
 
                         <div id="id01" class="w3-modal">
 

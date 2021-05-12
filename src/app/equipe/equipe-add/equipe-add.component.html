@@ -31,29 +31,29 @@
       <div class="card-body" style="padding: 80px 174px;">
         <h2 class="title">Ajouter Equipe</h2>
         <div  style="width: 250px;">
-<div class="col-md-4 user-container">
+<div class="col-md-6 user-container">
 
   <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group">
 
 
-      <label for="paysequipe">paysequipe:*</label>
+      <label for="paysequipe">Nom equipe:*</label>
       <input type="text" formControlName="paysequipe" style="width:400px;" placeholder="paysequipe" name="paysequipe" class="form-control" id="paysequipe">
     </div>
 
     <div class="form-group">
-      <label for="formation">formation:*</label>
+      <label for="formation">Formation:*</label>
       <input type="text" formControlName="formation" style="width:400px;" placeholder="formation" name="formation" class="form-control" id="formation">
     </div>
 
     <div class="form-group">
-      <label for="imageequipe">imageequipe:</label>
+      <label for="imageequipe">Image equipe:</label>
       <input formControlName="imageequipe" placeholder="imageequipe" style="width:400px;" name="imageequipe" class="form-control" id="imageequipe">
     </div>
     <div class="form-group">
-      <label for="nbcoupe">nbcoupe:*</label>
-      <input formControlName="nbcoupe" placeholder="nbcoupe" name="nbcoupe" style="width:400px;" class="form-control" id="nbcoupe">
+      <label for="nbcoupe">Nb coupe:*</label>
+      <input type="number" formControlName="nbcoupe" placeholder="nbcoupe" name="nbcoupe" style="width:400px;" class="form-control" id="nbcoupe">
     </div>
 
 

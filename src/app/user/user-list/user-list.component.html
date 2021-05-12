@@ -16,6 +16,9 @@
         <th>Email</th>
         <th>Username</th>
         <th>password </th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -28,10 +31,14 @@
         <td>{{ user.password }}</td>
 
         <td>
-          <a (click)="getUserById(user.id)" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-          <a (click)="updateUser(user.id)"class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-          <a  (click)="deleteUser(user.id)"   class="w3-button w3-black"data-toggle="modal" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+          <a (click)="getUserById(user.id)" class="view w3-button btn" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
 
+        </td>
+        <td>
+          <a (click)="updateUser(user.id)"class="edit w3-button btn" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+        </td>
+        <td>
+          <a  (click)="deleteUser(user.id)"   class="w3-button delete btn"data-toggle="modal"  title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
         </td>
       </tr>
 

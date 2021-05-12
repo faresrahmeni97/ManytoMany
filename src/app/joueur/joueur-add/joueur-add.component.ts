@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Joueur} from "../../modele/joueur";
-import {Equipe} from "../../modele/equipe";
-import {EquipeServiceService} from "../../_services/equipe-service.service";
-import {JoueurServiceService} from "../../_services/joueur-service.service";
-import {Router} from "@angular/router";
-import {TokenStorageService} from "../../_services/token-storage.service";
+import {Joueur} from '../../modele/joueur';
+import {Equipe} from '../../modele/equipe';
+import {EquipeServiceService} from '../../_services/equipe-service.service';
+import {JoueurServiceService} from '../../_services/joueur-service.service';
+import {Router} from '@angular/router';
+import {TokenStorageService} from '../../_services/token-storage.service';
 
 @Component({
   selector: 'app-joueur-add',
@@ -14,20 +14,23 @@ import {TokenStorageService} from "../../_services/token-storage.service";
 export class JoueurAddComponent implements OnInit {
 
   isLoggedIn: any;
-  roles:any;
+  roles: any;
   showAdminBoard = false;
 
   joueur: Joueur = new Joueur();
-  ideq!:number;
+  ideq!: number;
   submitted = false;
+
+  equipes: any;
+
   constructor(private equipeService: EquipeServiceService,
               private router: Router,
-              private service:JoueurServiceService,
+              private service: JoueurServiceService,
               private tokenStorageService: TokenStorageService) { }
 
 
 
-  equipe !:Equipe;
+  equipe !: Equipe;
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -44,6 +47,9 @@ export class JoueurAddComponent implements OnInit {
     {
       this.router.navigate(['/joueurs']);
     }
+    this.equipeService.getEquipesList().subscribe(data => {
+      this.equipes = data;
+    });
   }
 
   newStaff(): void {
@@ -54,17 +60,16 @@ export class JoueurAddComponent implements OnInit {
   }
 
   save() {
-    this.equipeService.getEquipeById(this.ideq).subscribe(data =>{
-      this.joueur.equipe=data;
-      console.log(this.joueur.equipe);
-      this.service.addJoueur(this.joueur).subscribe(data => {
+
+      // @ts-ignore
+    this.service.addJoueur(this.joueur).subscribe(data => {
         console.log(data);
         this.joueur = new Joueur();
       });
-    });
-  }
-  onSubmit() {
+    }
 
+
+onSubmit() {
     this.submitted = true;
     this.save();
   }

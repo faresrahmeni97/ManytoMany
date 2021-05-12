@@ -6,6 +6,9 @@
     <h2>List Equipe</h2>
   </div>
   <div class="panel-body">
+    <div class="col-sm-4 createSegment">
+      <a  class="btn dim_button create_new" *ngIf="showAdminBoard" [routerLink]="['/addequipe']"> <span class="glyphicon glyphicon-plus"></span> Ajouter Equipe</a>
+    </div>
     <table class="table table-striped">
       <thead>
       <tr>
@@ -15,9 +18,9 @@
         <th>Formation</th>
         <th>Imageequipe</th>
         <th>Nbcoupe</th>
-        <div class="col-sm-4 createSegment">
-          <a  class="btn dim_button create_new" *ngIf="showAdminBoard" [routerLink]="['/addequipe']"> <span class="glyphicon glyphicon-plus"></span> Ajouter Equipe</a>
-        </div>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -32,10 +35,13 @@
 
 
         <td *ngIf="showAdminBoard">
-          <a (click)="getEquipeById(equipe.id)" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-          <a (click)="updateEquipe(equipe.id)"class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-          <a  (click)="deleteEquipe(equipe.id)"   class="w3-button w3-black"data-toggle="modal" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-
+          <a (click)="getEquipeById(equipe.id)" class="view w3-button btn" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+        </td>
+        <td *ngIf="showAdminBoard">
+          <a (click)="updateEquipe(equipe.id)"class="edit w3-button btn" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+        </td>
+        <td *ngIf="showAdminBoard">
+          <a  (click)="deleteEquipe(equipe.id)"   class="w3-button btn delete"data-toggle="modal" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
         </td>
       </tr>
 

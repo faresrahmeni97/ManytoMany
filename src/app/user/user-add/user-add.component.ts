@@ -44,7 +44,7 @@ export class UserAddComponent implements OnInit {
     email: ''
   });
   onSubmit() {
-    this.service.addUser(this.checkoutForm.value).subscribe( data => { this.router.navigate(['/users']);
+    this.service.createUser(this.checkoutForm.value).subscribe( data => { this.router.navigate(['/users']);
     });
   }
 
