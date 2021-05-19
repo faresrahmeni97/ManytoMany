@@ -28,8 +28,6 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-
-          <ul class="nav navbar-nav"   >
             <div class="navbar-header">
               <img src="https://api.fifa.com/api/v1/picture/tournaments-sq-4/255711_w"border-radius="50%;" width="50px;">
               <a class="navbar-brand" routerLink="home">Qatar2022</a>
@@ -41,30 +39,25 @@
             <li><a  routerLink="equipes" *ngIf="isLoggedIn">Liste des equipes</a></li>
             <li><a routerLink="joueurs" *ngIf="isLoggedIn">Liste des joueurs</a></li>
             <li><a routerLink="staffs" *ngIf="isLoggedIn">Liste des Staffs</a></li>
-
-
-            <li *ngIf="isLoggedIn && !showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 250px;">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="isLoggedIn && !showAdminBoard">
               <a class="nav-link" routerLink="profile">{{ username }}</a>
             </li>
-            <li *ngIf="isLoggedIn && showAdminBoard" class="d-flex flex-row-reverse" style="margin-left: 250px;">
+            <li *ngIf="isLoggedIn && showAdminBoard">
               <a class="nav-link" routerLink="profile">{{ username }}</a>
             </li>
-            <li *ngIf="isLoggedIn" class="d-flex flex-row-reverse" >
+            <li *ngIf="isLoggedIn" class="" >
               <a  class="nav-link" (click)="logout()">LogOut</a>
             </li>
 
             <li *ngIf="!isLoggedIn">
-              <a class="nav-link" routerLink="register" style="margin-left: 850px;">Sign Up</a>
+              <a class="nav-link" routerLink="register" >Sign Up</a>
             </li>
             <li *ngIf="!isLoggedIn">
               <a  class="nav-link" routerLink="login">Login</a>
             </li>
           </ul>
-
-
-
-
-        </ul>
 
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
